@@ -1,3 +1,4 @@
+```
 ███████╗██╗███╗   ██╗ █████╗ ██╗     ██╗     ██╗   ██╗
 ██╔════╝██║████╗  ██║██╔══██╗██║     ██║     ╚██╗ ██╔╝
 █████╗  ██║██╔██╗ ██║███████║██║     ██║      ╚████╔╝ 
@@ -11,10 +12,11 @@
 ██╔═══╝ ██║   ██║╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝  ╚════██║╚═╝
 ██║     ╚██████╔╝███████║   ██║   ╚██████╔╝██║  ██║███████╗███████║██╗
 ╚═╝      ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝
+```
 
-# PostgreSQL Development Environment
+# Finally, Postgres!
 
-Ready-to-use PostgreSQL database setup with Docker for development purposes.
+Ready-to-use PostgreSQL development environment with Docker. Simple setup, smart defaults, and comprehensive management commands.
 
 ## Requirements
 
