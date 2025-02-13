@@ -21,7 +21,7 @@ services:
       retries: ${HEALTHCHECK_RETRIES:-5}
       start_period: ${HEALTHCHECK_START_PERIOD:-30s}
     networks:
-      - ${NETWORK_NAME:-postgres_network}
+      - postgres_network
     logging:
       driver: "json-file"
       options:
