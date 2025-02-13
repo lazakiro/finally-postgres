@@ -14,6 +14,7 @@ BACKUP_DIR ?= ./var/backups
 SCRIPTS_DIR ?= ./var/init-scripts
 DB_HOST ?= localhost
 DB_PORT ?= 5432
+DOCKER_COMPOSE := $(shell if command -v docker-compose >/dev/null 2>&1; then echo "docker-compose"; else echo "docker compose"; fi)
 
 # Colors
 GREEN := \033[0;32m
@@ -22,7 +23,6 @@ YELLOW := \033[0;33m
 NC := \033[0m # No Color
 
 .PHONY: help setup start stop restart reload status logs health-check clean backup restore ps
-
 help:
 	@echo "Available commands:"
 	@echo "${GREEN}make setup${NC}         - Create necessary directories"
@@ -70,28 +70,28 @@ setup:
 
 start: setup
 	@echo "${GREEN}Starting PostgreSQL container...${NC}"
-	docker-compose -f $(COMPOSE_FILE) up -d
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) up -d
 
 stop:
 	@echo "${YELLOW}Stopping PostgreSQL container...${NC}"
-	docker-compose -f $(COMPOSE_FILE) stop
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) stop
 
 restart:
 	@echo "${YELLOW}Restarting PostgreSQL container...${NC}"
-	docker-compose -f $(COMPOSE_FILE) restart
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) restart
 
 reload:
 	@echo "${YELLOW}Reloading PostgreSQL container...${NC}"
-	docker-compose -f $(COMPOSE_FILE) down
-	docker-compose -f $(COMPOSE_FILE) up -d
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) down
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) up -d
 
 status:
 	@echo "${GREEN}Checking container status...${NC}"
-	docker-compose -f $(COMPOSE_FILE) ps
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) ps
 
 logs:
 	@echo "${GREEN}Showing container logs...${NC}"
-	docker-compose -f $(COMPOSE_FILE) logs -f $(SERVICE_NAME)
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) logs -f $(SERVICE_NAME)
 
 health-check:
 	@echo "${GREEN}Checking PostgreSQL health...${NC}"
@@ -99,7 +99,7 @@ health-check:
 
 clean:
 	@echo "${RED}Removing container and volumes...${NC}"
-	docker-compose -f $(COMPOSE_FILE) down -v
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) down -v
 
 backup:
 	@echo "${GREEN}Creating database backup...${NC}"
@@ -117,11 +117,11 @@ restore:
 
 ps:
 	@echo "${GREEN}Listing running containers...${NC}"
-	docker-compose -f $(COMPOSE_FILE) ps
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) ps
 
 destroy:
 	@echo "${RED}Destroying container and volumes...${NC}"
-	docker-compose -f $(COMPOSE_FILE) down -v
+	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) down -v
 	@echo "${GREEN}Removing project directories...${NC}"
 
 purge: destroy
